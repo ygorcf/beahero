@@ -20,6 +20,8 @@ module.exports = {
       ])
 
     response.header('X-Total-Count', count['count(*)'])
+    response.header('Access-Control-Expose-Headers', 'X-Total-Count')
+    console.log(page, limit, incidents)
 
     return response.json(incidents)
   },
