@@ -1,4 +1,8 @@
-
+/**
+ * Metodo de comando executado quando vai executar a migration. Com o objetivo
+ * de criar a tabela de incidentes.
+ * @param {Object} knex - A instancia do knex.
+ */
 exports.up = function(knex) {
   return knex.schema.createTable('incidents', table => {
     table.increments()
@@ -13,6 +17,11 @@ exports.up = function(knex) {
   })
 };
 
+/**
+ * Metodo de comando executado quando vai ser desfeita a migration. Com o
+ * objetivo de dropar a tabela de incidentes.
+ * @param {Object} knex - A instancia do knex.
+ */
 exports.down = function(knex) {
   return knex.schema.dropTable('incidents')
 };

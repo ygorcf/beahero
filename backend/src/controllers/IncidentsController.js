@@ -1,6 +1,12 @@
 const connection = require('../database/connection')
 
 module.exports = {
+  /**
+   * Metodo responsavel pelo contexto index dos incidentes, com o objetivo de buscar
+   * a lista de incidentes.
+   * @param {Object} request - Os dados da requisicao.
+   * @param {Object} response - Os dados da resposta.
+   */
   async index (request, response) {
     const { page = 1, limit = 5 } = request.query
 
@@ -21,10 +27,16 @@ module.exports = {
 
     response.header('X-Total-Count', count['count(*)'])
     response.header('Access-Control-Expose-Headers', 'X-Total-Count')
-    console.log(page, limit, incidents)
 
     return response.json(incidents)
   },
+
+  /**
+   * Metodo responsabel pela rota de criacao do contexto de incidents, com o
+   * objetivo de criar um novo incidente.
+   * @param {Object} request - Os dados da requisicao.
+   * @param {Object} response - Os dados da resposta.
+   */
   async create (request, response) {
     const { title, description, value } = request.body
     const ong_id = request.headers.authorization
@@ -38,6 +50,13 @@ module.exports = {
 
     return response.json({ id })
   },
+
+  /**
+   * Metodo responsavel pela remocao do contexto de incidentes, com o objetivo
+   * de deletar um incidente.
+   * @param {Object} request - Os dados da requisicao.
+   * @param {Object} response - Os dados da resposta.
+   */
   async delete (request, response) {
     const { id } = request.params
     const ong_id = request.headers.authorization
