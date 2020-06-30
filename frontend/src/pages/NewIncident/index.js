@@ -7,6 +7,12 @@ import './styles.css'
 import logoImg from '../../assets/logo.svg'
 import api from '../../services/api'
 
+/**
+ * Metodo de criacao do componente de cadastrar um novo incidente.
+ * @returns (
+ *  <NewIncidents />
+ * )
+ */
 export default function NewIncidents () {
   const history = useHistory()
 
@@ -16,6 +22,11 @@ export default function NewIncidents () {
 
   const ongId = localStorage.getItem('ongId')
 
+  /**
+   * Metodo de callback de quando for submetido o formulario de adicionar
+   * incidente, com o objetivo de enviar a requisicao de adicionar incidente.
+   * @param {Event} e - Os dados do evento que ocorreu.
+   */
   async function handleNewIncident (e) {
     e.preventDefault()
 

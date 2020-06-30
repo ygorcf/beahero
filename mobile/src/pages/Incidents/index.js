@@ -9,6 +9,12 @@ import logoImg from '../../assets/logo.png'
 
 import styles from './styles'
 
+/**
+ * Metodo de criacao do componente de listagem de incidentes.
+ * @returns (
+ *  <Incidents />
+ * )
+ */
 export default function Incidents() {
   const [incidents, setIncidents] = useState([])
   const [total, setTotal] = useState(0)
@@ -16,12 +22,20 @@ export default function Incidents() {
   const [loading, setLoading] = useState(false)
   const navigation = useNavigation()
 
+  /**
+   * Metodo de callback de quando foi clicado no botao de detalhar um incidente,
+   * com o objetivo de navegar para a tela de detalhes do incidente.
+   * @param {Object} incident - Os dados do incidente que ira ser detalhado.
+   */
   function navigateToDetail (incident) {
     navigation.navigate('Detail', { incident })
   }
 
+  /**
+   * Metodo de comando, com o objetivo de varregar a lista de incidentes da
+   * pagina atual.
+   */
   async function loadIncidents () {
-    console.log(loading, total)
     if (loading) {
       return
     }
@@ -39,7 +53,6 @@ export default function Incidents() {
     setTotal(parseInt(response.headers['x-total-count']))
     setPage(page + 1)
     setLoading(false)
-    console.log(loading, total, response)
   }
 
   useEffect(() => {

@@ -7,6 +7,12 @@ const AppStack = createStackNavigator()
 import Incidents from './pages/Incidents'
 import Detail from './pages/Detail'
 
+/**
+ * Metodo de criacao do componente de rotas.
+ * @returns (
+ *  <Routes />
+ * )
+ */
 export default function Routes() {
   return (
     <NavigationContainer>

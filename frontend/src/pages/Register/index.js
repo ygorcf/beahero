@@ -6,6 +6,12 @@ import './styles.css'
 import logoImg from '../../assets/logo.svg'
 import api from '../../services/api'
 
+/**
+ * Metodo de criacao do componente de registrar uma ong.
+ * @returns (
+ *  <Register />
+ * )
+ */
 export default function Register () {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -15,6 +21,11 @@ export default function Register () {
 
   const history = useHistory()
 
+  /**
+   * Metodo de callback de quando foi submetido o formulario de cadastro de ong.
+   * Com o objetivo de enviar a requisicao de criar uma ong.
+   * @param {Event} e - Os dados do evento que ocorreu.
+   */
   async function handleRegister (e) {
     e.preventDefault()
     const data = {

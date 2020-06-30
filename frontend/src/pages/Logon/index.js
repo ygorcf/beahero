@@ -8,11 +8,22 @@ import logoImg from '../../assets/logo.svg'
 import heroesImg from '../../assets/heroes.png'
 import api from '../../services/api'
 
+/**
+ * Metodo de criacao do componente de login.
+ * @returns (
+ *  <Logon />
+ * )
+ */
 export default function Logon () {
   const [id, setId] = useState('')
 
   const history = useHistory()
 
+  /**
+   * Metodo de callback de quando e submetido o formulario, com o objetivo de
+   * realizar o login no sistema.
+   * @param {Event} e - Os dados do evento que ocorreu.
+   */
   async function handleLogin (e) {
     e.preventDefault()
 

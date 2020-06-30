@@ -6,6 +6,12 @@ import Register from './pages/Register'
 import Profile from './pages/Profile'
 import NewIncident from './pages/NewIncident'
 
+/**
+ * Metodo de criacao do componente de rotas da aplicacao.
+ * @returns (
+ *  <Routes />
+ * )
+ */
 export default function Routes() {
   return (
     <BrowserRouter>

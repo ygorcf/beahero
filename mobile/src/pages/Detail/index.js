@@ -8,6 +8,12 @@ import logoImg from '../../assets/logo.png'
 
 import styles from './styles'
 
+/**
+ * Metodo de criacao do componente de detalhar um incidente.
+ * @returns (
+ *  <Detail />
+ * )
+ */
 export default function Detail() {
   const navigation = useNavigation()
   const route = useRoute()
@@ -15,10 +21,18 @@ export default function Detail() {
   const incident = route.params.incident
   const message = `Olá ${incident.name}, estou entrando em contato pois gostaria de ajudar no caso "${incident.title}" com o valor de ${Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(incident.value)}.`
 
+  /**
+   * Metodo de callback de quando foi clicado no botao de voltar, com o objetivo
+   * de voltar na navegacao.
+   */
   function navigateBack () {
     navigation.goBack()
   }
 
+  /**
+   * Metodo de callback de quando foi clicado no botao de enviar email, com o
+   * objetivo de abrir o aplicativo de email padrao do celular.
+   */
   function sendMail () {
     MailComposer.composeAsync({
       subject: `Herói do caso: ${incident.title}`,
@@ -27,6 +41,10 @@ export default function Detail() {
     })
   }
 
+  /**
+   * Metodo de callback de quando foi clicado no botao de enviar whatsapp, com o
+   * objetivo de abrir o whatsapp com a mensagem para a ong.
+   */
   function sendWhatsapp () {
     Linking.openURL(`whatsapp://send?phone=${incident.whatsapp}&text=${message}`)
   }

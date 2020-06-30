@@ -6,6 +6,12 @@ import './styles.css'
 import logoImg from '../../assets/logo.svg'
 import api from '../../services/api'
 
+/**
+ * Metodo de criacao do componente inicial do perfil da ong.
+ * @returns (
+ *  <Profile />
+ * )
+ */
 export default function Profile () {
   const history = useHistory()
 
@@ -23,6 +29,12 @@ export default function Profile () {
     })
   }, [ongId])
 
+  /**
+   * Metodo de callback de quando foi clicado no botao de deletar um incidente,
+   * com o objetivo de enviar a requisicao de deletar um incidente e atualizar a
+   * lista de incidentes se necessario.
+   * @param {string} id - O id do incidente que foi clicado no botao de deletar.
+   */
   async function handleDeleteIncident (id) {
     try {
       await api.delete(`incidents/${id}`, {
@@ -37,6 +49,10 @@ export default function Profile () {
     }
   }
 
+  /**
+   * Metodo de callback de quando foi clicado no botao de logout, com o objetivo
+   * de limpar os dados da sessao.
+   */
   function handleLogout () {
     localStorage.clear()
     history.push('/')
